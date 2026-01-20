@@ -1,66 +1,69 @@
-// src/scripts/github.js
+const GITHUB_USERNAME = "devlogix-cs";
+const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
 
-const GITHUB_USERNAME = "sanjay-1221342"; // 🔴 change if needed
+let allRepos = [];
 
-export async function loadGitHubProjects() {
-  const grid = document.getElementById("projectsGrid");
-  if (!grid) return;
-
-  grid.innerHTML = "";
+async function fetchGitHubProjects() {
+  const loading = document.getElementById("projects-loading");
+  const error = document.getElementById("projects-error");
+  const container = document.getElementById("projects-container");
 
   try {
-    const response = await fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=9`
-    );
-
+    const response = await fetch(GITHUB_API_URL);
     if (!response.ok) throw new Error("GitHub API error");
 
     const repos = await response.json();
 
-    if (!repos.length) {
-      showFallback(grid);
-      return;
-    }
+    allRepos = repos.filter(repo => !repo.fork);
 
-    repos.forEach(repo => {
-      grid.appendChild(createProjectCard(repo));
-    });
+    renderProjects(allRepos.slice(0, 6));
 
-    document.getElementById("searchResultsCount").textContent =
-      `${repos.length} projects`;
+    loading.classList.add("hidden");
+    container.classList.remove("hidden");
 
   } catch (err) {
-    console.error("❌ GitHub fetch failed:", err);
-    showFallback(grid);
+    console.error(err);
+    loading.classList.add("hidden");
+    error.classList.remove("hidden");
   }
 }
 
-function createProjectCard(repo) {
-  const div = document.createElement("div");
-  div.className = "project-card";
+function renderProjects(repos) {
+  const container = document.getElementById("projects-container");
+  container.innerHTML = "";
 
-  div.innerHTML = `
-    <div class="h-48 rounded-2xl bg-slate-700 flex items-center justify-center mb-6">
-      <i class="fas fa-code text-3xl text-white/60"></i>
-    </div>
-    <h3 class="text-2xl font-bold mb-2">${repo.name}</h3>
-    <p class="text-white/60 mb-4 line-clamp-2">
-      ${repo.description || "No description"}
-    </p>
-    <div class="flex justify-between items-center text-sm">
-      <span>⭐ ${repo.stargazers_count}</span>
-      <a href="${repo.html_url}" target="_blank" class="text-blue-400">
-        View Code →
+  repos.forEach(repo => {
+    const card = document.createElement("div");
+    card.className = "project-card fade-in";
+
+    card.innerHTML = `
+      <h3 class="project-title">${repo.name}</h3>
+      <p class="project-text">
+        ${repo.description || "No description provided."}
+      </p>
+
+      <div class="mt-4 text-sm flex justify-between text-gray-500">
+        <span>⭐ ${repo.stargazers_count}</span>
+        <span>🍴 ${repo.forks_count}</span>
+        <span>🧠 ${repo.language || "N/A"}</span>
+      </div>
+
+      <a href="${repo.html_url}" target="_blank"
+        class="inline-block mt-4 text-blue-500 hover:underline">
+        View on GitHub →
       </a>
-    </div>
-  `;
-  return div;
+    `;
+
+    container.appendChild(card);
+  });
 }
 
-function showFallback(grid) {
-  grid.innerHTML = `
-    <div class="text-center text-white/60 col-span-full">
-      Unable to load GitHub projects.
-    </div>
-  `;
+function filterProjectsByKeyword(keyword) {
+  const filtered = allRepos.filter(repo =>
+    (repo.name + repo.description + repo.language)
+      .toLowerCase()
+      .includes(keyword.toLowerCase())
+  );
+
+  renderProjects(filtered.length ? filtered : allRepos.slice(0, 6));
 }

@@ -9,6 +9,8 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="./styles/animations.css">
@@ -77,32 +79,37 @@
 <section id="projects" class="py-20 px-6">
   <div class="max-w-6xl mx-auto">
     <h2 class="section-title">Projects</h2>
+    <p class="section-text">
+      Live projects fetched directly from my GitHub profile.
+    </p>
+    <!-- Voice Search -->
+<div class="flex justify-center mt-6">
+  <button id="voice-btn"
+    class="flex items-center gap-2 px-5 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+    🎙️ Voice Search Projects
+  </button>
+</div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-      <div class="project-card">
-        <h3 class="project-title">AI Interactive Portfolio</h3>
-        <p class="project-text">
-          Personal portfolio with GitHub API, voice search, analytics,
-          PWA support, and AI chatbot.
-        </p>
-      </div>
+<p id="voice-status" class="text-center mt-2 text-sm text-gray-500"></p>
 
-      <div class="project-card">
-        <h3 class="project-title">Task Manager App</h3>
-        <p class="project-text">
-          Full-stack task management app with authentication and CRUD features.
-        </p>
-      </div>
 
-      <div class="project-card">
-        <h3 class="project-title">Student Utility Tools</h3>
-        <p class="project-text">
-          Collection of productivity tools built for engineering students.
-        </p>
-      </div>
+    <!-- Loading -->
+    <div id="projects-loading" class="text-center mt-10">
+      Loading projects from GitHub...
+    </div>
+
+    <!-- Error -->
+    <div id="projects-error" class="text-center mt-10 text-red-500 hidden">
+      Failed to load projects. Please try again later.
+    </div>
+
+    <!-- Projects Grid -->
+    <div id="projects-container"
+         class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 hidden">
     </div>
   </div>
 </section>
+
 
 <!-- ================= SKILLS ================= -->
 <section id="skills" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
@@ -166,4 +173,12 @@
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer class="py-6 text-center text-sm tex
+<footer class="py-6 text-center text-sm text-gray-500">
+  © 2026 Sanjay • Built with ❤️ & Tailwind CSS
+</footer>
+
+<script src="./scripts/github.js"></script>
+<script src="./scripts/main.js"></script>
+</body>
+</html>
+

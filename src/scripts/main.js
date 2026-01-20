@@ -1,28 +1,49 @@
-// src/scripts/main.js
+document.addEventListener("DOMContentLoaded", () => {
+  fetchGitHubProjects();
 
-import { loadGitHubProjects } from "./github.js";
-import { initVoiceSearch } from "./voiceSearch.js";
-import { initThemeToggle } from "./themeToggle.js";
-import { trackVisitor } from "./analytics.js";
-import { initCharts } from "./charts.js";
+  const voiceBtn = document.getElementById("voice-btn");
+  const voiceStatus = document.getElementById("voice-status");
 
-document.addEventListener("DOMContentLoaded", async () => {
-  console.log("🚀 Portfolio initializing...");
+  if (!("webkitSpeechRecognition" in window || "SpeechRecognition" in window)) {
+    voiceBtn.disabled = true;
+    voiceStatus.textContent = "Voice search not supported in this browser.";
+    return;
+  }
 
-  // Show sections first
-  document.getElementById("projects")?.classList.remove("hidden");
-  document.getElementById("analytics")?.classList.remove("hidden");
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  // Init core features
-  initThemeToggle();
-  trackVisitor();
+  const recognition = new SpeechRecognition();
+  recognition.lang = "en-US";
 
-  // Load GitHub projects
-  await loadGitHubProjects();
+  voiceBtn.addEventListener("click", () => {
+    voiceStatus.textContent = "🎧 Listening...";
+    recognition.start();
+  });
 
-  // Optional features
-  initVoiceSearch();
-  initCharts();
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    voiceStatus.textContent = `Heard: "${transcript}"`;
 
-  console.log("✅ Portfolio fully initialized");
+    filterProjectsByKeyword(transcript);
+  };
+
+  recognition.onerror = () => {
+    voiceStatus.textContent = "❌ Voice recognition failed.";
+  };
+});
+gsap.utils.toArray("section").forEach(section => {
+  gsap.fromTo(
+    section,
+    { opacity: 0, y: 40 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+      }
+    }
+  );
 });
