@@ -13,60 +13,157 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="./styles/animations.css">
   <link rel="stylesheet" href="./styles/themes.css">
-
 </head>
+
 <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
 
-  <!-- NAVBAR -->
-  <header class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur">
-    <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Sanjay.dev</h1>
-      <ul class="hidden md:flex gap-6 font-medium">
-        <li><a href="#home" class="hover:text-blue-500">Home</a></li>
-        <li><a href="#projects" class="hover:text-blue-500">Projects</a></li>
-        <li><a href="#skills" class="hover:text-blue-500">Skills</a></li>
-        <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- ================= NAVBAR ================= -->
+<header class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Sanjay.dev</h1>
+    <ul class="hidden md:flex gap-6 font-medium">
+      <li><a href="#home" class="hover:text-blue-500">Home</a></li>
+      <li><a href="#about" class="hover:text-blue-500">About</a></li>
+      <li><a href="#projects" class="hover:text-blue-500">Projects</a></li>
+      <li><a href="#skills" class="hover:text-blue-500">Skills</a></li>
+      <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- HERO SECTION -->
-  <section id="home" class="min-h-screen flex items-center justify-center px-6">
-    <div class="text-center max-w-3xl">
-      <h2 class="text-4xl md:text-6xl font-extrabold mb-6">
-        Hi, I'm <span class="text-blue-500">Sanjay</span> 👋
-      </h2>
-      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
-        CSE Student | Full Stack Developer | AI Enthusiast  
-        <br />Building fast, interactive & intelligent web experiences.
-      </p>
+<!-- ================= HERO ================= -->
+<section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
+  <div class="text-center max-w-3xl fade-in">
+    <h2 class="text-4xl md:text-6xl font-extrabold mb-6">
+      Hi, I'm <span class="text-blue-500">Sanjay</span> 👋
+    </h2>
+    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
+      CSE Student • Full Stack Developer • AI Enthusiast  
+      <br />Building fast, interactive & intelligent web experiences.
+    </p>
 
-      <div class="flex justify-center gap-4">
-        <a href="#projects" class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-          View Projects
-        </a>
-        <a href="../public/resume.pdf" target="_blank"
-           class="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white">
-          Download Resume
-        </a>
+    <div class="flex justify-center gap-4">
+      <a href="#projects"
+         class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+        View Projects
+      </a>
+      <a href="../public/resume.pdf" target="_blank"
+         class="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white">
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-text">
+      I’m a Computer Science Engineering student passionate about full-stack
+      development, system design, and applied AI. I enjoy building scalable,
+      real-world web applications with clean UI and solid architecture.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-10">
+      <div class="card">🎓 CSE Student</div>
+      <div class="card">💻 Full Stack Developer</div>
+      <div class="card">🤖 AI & Automation Explorer</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+      <div class="project-card">
+        <h3 class="project-title">AI Interactive Portfolio</h3>
+        <p class="project-text">
+          Personal portfolio with GitHub API, voice search, analytics,
+          PWA support, and AI chatbot.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3 class="project-title">Task Manager App</h3>
+        <p class="project-text">
+          Full-stack task management app with authentication and CRUD features.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3 class="project-title">Student Utility Tools</h3>
+        <p class="project-text">
+          Collection of productivity tools built for engineering students.
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Placeholder Sections -->
-  <section id="projects" class="min-h-screen flex items-center justify-center">
-    <h2 class="text-3xl font-bold">Projects (Coming Next Phase)</h2>
-  </section>
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="section-title">Skills</h2>
 
-  <section id="skills" class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-800">
-    <h2 class="text-3xl font-bold">Skills (Coming Next Phase)</h2>
-  </section>
+    <div class="grid md:grid-cols-3 gap-8 mt-10">
+      <div>
+        <h3 class="skill-heading">Frontend</h3>
+        <ul class="skill-list">
+          <li>HTML5</li>
+          <li>CSS3 / Tailwind</li>
+          <li>JavaScript</li>
+          <li>React (Basics)</li>
+        </ul>
+      </div>
 
-  <section id="contact" class="min-h-screen flex items-center justify-center">
-    <h2 class="text-3xl font-bold">Contact (Coming Next Phase)</h2>
-  </section>
+      <div>
+        <h3 class="skill-heading">Backend</h3>
+        <ul class="skill-list">
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>REST APIs</li>
+          <li>MongoDB (Basics)</li>
+        </ul>
+      </div>
 
-  <!-- Scripts -->
-  <script src="./scripts/main.js"></script>
-</body>
-</html>
+      <div>
+        <h3 class="skill-heading">Tools & CS</h3>
+        <ul class="skill-list">
+          <li>Git & GitHub</li>
+          <li>DSA</li>
+          <li>OOPS</li>
+          <li>DBMS</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-20 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="section-title">Contact</h2>
+    <p class="section-text">
+      Want to collaborate or discuss opportunities?  
+      Reach out using the form below.
+    </p>
+
+    <form class="max-w-xl mx-auto mt-10 space-y-4">
+      <input type="text" placeholder="Your Name" class="input-field" />
+      <input type="email" placeholder="Your Email" class="input-field" />
+      <textarea rows="4" placeholder="Your Message" class="input-field"></textarea>
+
+      <button type="submit"
+        class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="py-6 text-center text-sm tex

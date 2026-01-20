@@ -1,55 +1,67 @@
-/* src/styles/themes.css - Dark/Light Mode + Custom Themes */
-:root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --text-primary: #0f172a;
-  --text-secondary: #64748b;
-  --accent-blue: #3b82f6;
-  --accent-purple: #8b5cf6;
-  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --border-light: rgba(226, 232, 240, 0.5);
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  text-align: center;
 }
 
-.dark {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --glass-bg: rgba(15, 23, 42, 0.7);
-  --border-light: rgba(71, 85, 105, 0.3);
+.section-text {
+  text-align: center;
+  max-width: 700px;
+  margin: 1rem auto 0;
+  color: #6b7280;
 }
 
-/* Theme Transitions */
-html, body {
-  transition: background-color 0.3s ease, color 0.3s ease;
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-align: center;
 }
 
-.theme-transition * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+.dark .card {
+  background: #1f2933;
 }
 
-/* Custom Theme Buttons */
-.theme-btn {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-light);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.project-card {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
 }
 
-.theme-btn:hover {
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+.dark .project-card {
+  border-color: #374151;
 }
 
-.dark .theme-btn:hover {
-  background: rgba(30, 41, 59, 0.9);
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
-/* Gradient Text */
-.gradient-text {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.project-text {
+  margin-top: 0.5rem;
+  color: #6b7280;
+}
+
+.skill-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.skill-list li {
+  margin-bottom: 0.25rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+}
+
+.dark .input-field {
+  background: #1f2933;
+  border-color: #374151;
+  color: white;
 }

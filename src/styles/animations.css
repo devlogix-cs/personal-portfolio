@@ -1,57 +1,14 @@
-/* src/styles/animations.css - GSAP + CSS Animations */
-@keyframes hero-reveal {
-  0% { 
-    opacity: 0; 
-    transform: translateY(40px) scale(0.95); 
-  }
-  100% { 
-    opacity: 1; 
-    transform: translateY(0) scale(1); 
-  }
+.fade-in {
+  animation: fadeIn 1.2s ease-in-out forwards;
 }
 
-@keyframes stagger-children {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse-glow-blue {
-  0%, 100% { 
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); 
-    transform: scale(1);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  50% { 
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8); 
-    transform: scale(1.05);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-
-@keyframes shimmer {
-  0% { background-position: -468px 0; }
-  100% { background-position: 468px 0; }
-}
-
-/* Loading States */
-.loading-shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 400% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-/* Floating Elements */
-.float-hero {
-  animation: float 6s ease-in-out infinite;
-}
-
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-
-/* Entrance Animations */
-.fade-in-up {
-  animation: slideInUp 0.8s ease-out forwards;
-}
-
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
