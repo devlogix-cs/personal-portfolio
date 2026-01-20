@@ -1,49 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetchGitHubProjects();
+  /* ================= THEME TOGGLE ================= */
+  const toggleBtn = document.getElementById("theme-toggle");
+  const root = document.documentElement;
 
-  const voiceBtn = document.getElementById("voice-btn");
-  const voiceStatus = document.getElementById("voice-status");
+  const savedTheme = localStorage.getItem("theme");
 
-  if (!("webkitSpeechRecognition" in window || "SpeechRecognition" in window)) {
-    voiceBtn.disabled = true;
-    voiceStatus.textContent = "Voice search not supported in this browser.";
-    return;
+  if (savedTheme) {
+    root.classList.toggle("dark", savedTheme === "dark");
+  } else {
+    root.classList.toggle(
+      "dark",
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    );
   }
 
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  const recognition = new SpeechRecognition();
-  recognition.lang = "en-US";
-
-  voiceBtn.addEventListener("click", () => {
-    voiceStatus.textContent = "🎧 Listening...";
-    recognition.start();
+  toggleBtn.addEventListener("click", () => {
+    const isDark = root.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   });
 
-  recognition.onresult = (event) => {
-    const transcript = event.results[0][0].transcript;
-    voiceStatus.textContent = `Heard: "${transcript}"`;
+  /* ================= GITHUB PROJECTS ================= */
+  fetchGitHubProjects();
 
-    filterProjectsByKeyword(transcript);
-  };
+  /* ================= ANALYTICS CHART ================= */
+  const ctx = document.getElementById("analyticsChart");
 
-  recognition.onerror = () => {
-    voiceStatus.textContent = "❌ Voice recognition failed.";
-  };
-});
-gsap.utils.toArray("section").forEach(section => {
-  gsap.fromTo(
-    section,
-    { opacity: 0, y: 40 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
+  if (ctx) {
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        datasets: [
+          {
+            label: "Visitors",
+            data: [12, 19, 8, 15, 22, 30, 28],
+            tension: 0.4,
+            fill: true
+          },
+          {
+            label: "Interactions",
+            data: [5, 9, 4, 10, 14, 20, 18],
+            tension: 0.4,
+            fill: true
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: "#9ca3af"
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: "#9ca3af" }
+          },
+          y: {
+            ticks: { color: "#9ca3af" }
+          }
+        }
       }
-    }
-  );
+    });
+  }
 });
