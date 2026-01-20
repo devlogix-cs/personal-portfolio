@@ -1,0 +1,10 @@
+{
+  "name": "ai-interactive-portfolio",
+  "version": "1.0.0",
+  "description": "AI-Enhanced Interactive Portfolio Website",
+  "scripts": {
+    "dev": "npx serve src"
+  },
+  "author": "Sanjay (sanjay-1221342)",
+  "license": "MIT"
+}
