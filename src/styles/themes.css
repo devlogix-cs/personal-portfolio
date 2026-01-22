@@ -1,3 +1,5 @@
+/* ================= BASE UI STYLES ================= */
+
 .section-title {
   font-size: 2.25rem;
   font-weight: 800;
@@ -20,7 +22,7 @@
 }
 
 .dark .card {
-  background: #1f2933;
+  background: #1f2937;
 }
 
 .project-card {
@@ -61,10 +63,11 @@
 }
 
 .dark .input-field {
-  background: #1f2933;
+  background: #1f2937;
   border-color: #374151;
   color: white;
 }
+
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
 }

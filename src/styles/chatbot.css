@@ -1,0 +1,107 @@
+/* ================= CHATBOT FINAL STYLES ================= */
+
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999999;
+  font-family: system-ui, sans-serif;
+}
+
+/* Toggle Button */
+#chat-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ef4444; /* red (debug-safe) */
+  color: white;
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Chat Window */
+#chat-window {
+  width: 320px;
+  background: white;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* Dark mode support */
+.dark #chat-window {
+  background: #111827;
+  color: white;
+}
+
+/* Header */
+#chat-header {
+  padding: 12px;
+  font-weight: 700;
+  background: #3b82f6;
+  color: white;
+  text-align: center;
+}
+
+/* Messages Area */
+#chat-messages {
+  padding: 12px;
+  height: 220px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: #111827;
+}
+
+/* Dark mode messages */
+.dark #chat-messages {
+  color: #e5e7eb;
+}
+
+/* Individual message spacing */
+#chat-messages div {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+/* Input Box */
+#chat-input-box {
+  display: flex;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Input */
+#chat-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #111827;
+  background: white;
+}
+
+/* Dark mode input */
+.dark #chat-input {
+  background: #1f2937;
+  color: white;
+}
+
+/* Placeholder */
+#chat-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Send Button */
+#chat-send {
+  padding: 0 14px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
